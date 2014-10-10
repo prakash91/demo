@@ -1,0 +1,40 @@
+<h1> Add Resume From Here </h1>
+
+<%= form_for :resume, url: resumes_path do |f| %>
+
+  <% if @resume.errors.any? %>
+  <div id="error_explanation">
+    <h2><%= pluralize(@resume.errors.count, "error") %> prohibited
+      from being saved:</h2>
+    <ul>
+    <% @resume.errors.full_messages.each do |msg| %>
+      <li><%= msg %></li>
+    <% end %>
+    </ul>
+  </div>
+  <% end %>
+
+  <table>
+    <tr><td>Resume Heading</td><td><%= f.text_field :resume_heading %></td></tr>
+
+    <tr><td>Functional Area</td><td><%= f.text_field :functional_area %></td></tr>
+
+    <tr><td>Current Company</td><td><%= f.text_field :current_company %></td></tr>
+
+    <tr><td>Position</td><td><%= f.text_field :position %></td></tr>
+
+    <tr><td>Key Skills</td><td><%= f.text_area :key_skills %></td></tr>
+
+    <tr><td>Total Experience</td><td><%= f.text_field :total_experience %></td></tr>
+
+    <tr><td>Expected Salary</td><td><%= f.text_field :expected_salary %></td></tr>
+
+    <tr><td>Higest Qualification</td><td><%= f.text_field :highest_qualification %></td></tr>
+
+    <tr><td>Attach Resume <small>(only pdf)</small></td><td><%= f.file_field :attach_resume %></td></tr>
+
+  </table>
+  <br/>
+  <div><%= f.submit "Create"%></div>
+
+<% end %>

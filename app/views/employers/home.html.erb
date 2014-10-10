@@ -1,0 +1,8 @@
+<%= @current_user.email %>
+<br/>
+<%= image_tag(@current_user.employer.icon_url, :size => "160x80") if @current_user.employer.icon.present? %>
+
+<h1> HOME EMPLOYER </h1>
+<br/>
+<%= link_to 'Show deatil', employer_path(current_user), :method => :get %>
+&nbsp;&nbsp;<%= link_to 'Ad-Post', new_post_path %>

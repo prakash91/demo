@@ -1,0 +1,11 @@
+<!DOCTYPE html>
+<html>
+<head>
+ <title>Job Seeker</title>
+</head>
+<body>
+ <%= link_to 'HOME', home_seekers_path %>&nbsp; &nbsp;
+ <%= link_to 'Log Out', destroy_user_session_path, :method => :delete %>
+ <%= yield %>
+</body>
+</html>

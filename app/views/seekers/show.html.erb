@@ -1,0 +1,31 @@
+<p>
+  <strong>Firstname:</strong> <%= @current_user.seeker.firstname %>
+</p>
+<p>
+  <strong>Lastname:</strong> <%= @current_user.seeker.lastname %>
+</p>
+<p>
+  <strong>Contact no. :</strong> <%= @current_user.seeker.contact %>
+</p>
+
+<p>
+  <strong>Gender :</strong> <%= @current_user.seeker.gender %>
+</p>
+<p>
+  <strong>Current Location:</strong> <%= @current_user.seeker.current_location %>
+</p>
+
+<p>
+  <strong>DOB :</strong> <%= @current_user.seeker.dob %>
+</p>
+<p>
+  <strong>Permanent Address:</strong>  <%= @current_user.seeker.permanent_address %>
+</p>
+
+<p>
+  <strong>Nationality :</strong>  <%= @current_user.seeker.nationality %>
+</p>
+<p>
+<%= image_tag(@current_user.seeker.photo_url, :size => "100x120") if @current_user.seeker. photo.present? %>
+</p>
+<%= link_to 'Edit Detail', edit_seeker_path %>

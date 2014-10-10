@@ -1,0 +1,11 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Employer</title>
+</head>
+<body>
+ <%= link_to 'Log Out', destroy_user_session_path, :method => :delete %>&nbsp;&nbsp;
+ <%= link_to 'HOME', home_employers_path %>
+  <%= yield %>
+</body>
+</html>

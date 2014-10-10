@@ -1,0 +1,40 @@
+<h1>Some more about Your Company</h1>
+<% if @employer.errors.any? %>
+  <div id="error_explanation">
+    <h2><%= pluralize(@employer.errors.count, "error") %> prohibited
+      from being saved:</h2>
+    <ul>
+    <% @employer.errors.full_messages.each do |msg| %>
+      <li><%= msg %></li>
+    <% end %>
+    </ul>
+  </div>
+  <% end %>
+<%= form_for(@employer,:html => {:multipart => true}, url: employers_path) do |f| %>
+  <table>
+    <tr><td>Company Name</td><td><%= f.text_field :company_name %></td></tr>
+
+    <tr><td>Company Type</td><td><%= f.radio_button 'company_type', "Company" %> COMPANY
+                                 <%= f.radio_button 'company_type', "consultancy" %> CONSULTANCY</td></tr>
+
+    <tr><td>Date Of Opening</td><td><%= f.date_select(:doo, :start_year=>1900, :end_year =>2030) %></td></tr>
+
+    <tr><td>Contact no.</td><td><%= f.text_field :contact %></td></tr>
+
+    <tr><td>Address</td><td><%= f.text_field :address %></td></tr>
+
+    <tr><td>Country</td><td><%= f.select :country, options_for_select([["INDIA", "india"], ["USA", "usa"]]) %></td></tr>
+
+    <tr><td>State</td><td><%= f.text_field :state %></td></tr>
+
+    <tr><td>City</td><td><%= f.text_field :city %></td></tr>
+
+    <tr><td>Pincode</td><td><%= f.text_field :pincode %></td></tr>
+
+    <tr><td>Total Employee</td><td><%= f.text_field :total_employee %></td></tr>
+    <tr><td>Company Icon</td><td><%= f.file_field :icon %></td></tr>
+
+  </table>
+  <div><%= f.submit "Done"%></div>
+
+<% end %>

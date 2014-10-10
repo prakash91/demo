@@ -1,0 +1,39 @@
+<h1>Add Some More Detail</h1>
+<%= link_to 'Sign Out', destroy_user_session_path, :method => :delete %>
+
+ <% if @seeker.errors.any? %>
+  <div id="error_explanation">
+    <h2><%= pluralize(@seeker.errors.count, "error") %> prohibited
+      from being saved:</h2>
+    <ul>
+    <% @seeker.errors.full_messages.each do |msg| %>
+      <li><%= msg %></li>
+    <% end %>
+    </ul>
+  </div>
+  <% end %>
+
+<%= form_for(@seeker, :html => {:multipart => true}, url: seekers_path) do |f| %>
+  <table>
+    <tr><td>Firstname</td><td><%= f.text_field :firstname %></td></tr>
+
+    <tr><td>Lastname</td><td><%= f.text_field :lastname %></td></tr>
+
+    <tr><td>Gender</td><td><%= f.radio_button 'gender', "male" %> MALE
+                   <%= f.radio_button 'gender', "female" %> FEMALE</td></tr>
+
+    <tr><td>Contact no.</td><td><%= f.text_field :contact %></td></tr>
+
+    <tr><td>Current Location</td><td><%= f.text_field :current_location %></td></tr>
+
+    <tr><td>Date Of Birth</td><td><%= f.date_select(:dob, :start_year=>1900, :end_year =>2030) %></td></tr>
+
+    <tr><td>Nationality</td><td><%= f.select :nationality, options_for_select([["INDIA", "india"], ["USA", "usa"]]) %></td></tr>
+
+    <tr><td>Permanent Address</td><td><%= f.text_area :permanent_address %></td></tr>
+    <tr><td>Profile Photo</td><td><%= f.file_field :photo %></td></tr>
+
+  </table>
+  <div><%= f.submit "Done"%></div>
+
+<% end %>

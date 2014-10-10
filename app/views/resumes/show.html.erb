@@ -1,0 +1,26 @@
+<h1>Resume </h1>
+
+<table>
+    <tr><td>Resume Heading</td><td><%= @resume.resume_heading %></td></tr>
+
+    <tr><td>Functional Area</td><td><%= @resume.functional_area %></td></tr>
+
+    <tr><td>Current Company</td><td><%= @resume.current_company %></td></tr>
+
+    <tr><td>Position</td><td><%= @resume.position %></td></tr>
+
+    <tr><td>Key Skills</td><td><%= @resume.key_skills %></td></tr>
+
+    <tr><td>Total Experience</td><td><%= @resume.total_experience %></td></tr>
+
+    <tr><td>Expected Salary</td><td><%= @resume.expected_salary %></td></tr>
+
+    <tr><td>Higest Qualification</td><td><%= @resume.highest_qualification %></td></tr>
+
+    <tr><td>Attach Resume</td><td><%= image_tag(@resume.attach_resume_url, :size => "100x170") if @resume.attach_resume.present? %></td></tr>
+
+    <tr><td>Active</td><td><%= @resume.active %></td></tr>
+
+  </table>
+
+  <%= link_to "Edit", edit_resume_path(@resume) %>

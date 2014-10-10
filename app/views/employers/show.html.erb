@@ -1,0 +1,17 @@
+<h1> Employer Detail </h1>
+
+<p> <strong>Company Name:</strong> <%= @current_user.employer.company_name %> </p>
+<p> <strong>Company Type:</strong> <%= @current_user.employer.company_type %> </p>
+<p> <strong>Contact no. :</strong> <%= @current_user.employer.contact %> </p>
+<p> <strong>Address:</strong> <%= @current_user.employer.address %> </p>
+<p> <strong>Date Of Opening:</strong> <%= @current_user.employer.doo %> </p>
+<p> <strong>Country :</strong> <%= @current_user.employer.country %> </p>
+<p> <strong>State:</strong>  <%= @current_user.employer.state %> </p>
+<p> <strong>City :</strong>  <%= @current_user.employer.city %> </p>
+<p> <strong>Pincode :</strong>  <%= @current_user.employer.pincode %> </p>
+<p> <strong>Total Employee :</strong>  <%= @current_user.employer.total_employee %> </p>
+<p>
+<%= image_tag(@current_user.employer.icon_url, :size => "160x80") if @current_user.employer.icon.present? %>
+</p>
+
+<%= link_to 'Edit Detail', edit_employer_path %>
