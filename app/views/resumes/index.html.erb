@@ -53,6 +53,7 @@
   "Create New Resume": addResume,
   Cancel: function() {
   dialog.dialog( "close" );
+
   }
   },
   close: function() {
@@ -72,65 +73,64 @@
 </head>
 <body>
   <div id="dialog-form" title="Create new Resume">
-  <p class="validateTips">All form fields are required.</p>
-  <fieldset>
-  <%= form_for :resume, url: resumes_path do |f| %>
-    
-    <label for="resume_heading">Resume Heading</label>
-    <%= f.text_field :resume_heading, :class=>"text ui-widget-content ui-corner-all" %>
-    <label for="functional_area">Functional Area</label>
-    <%= f.text_field :functional_area, :class=>"text ui-widget-content ui-corner-all" %>
-    <label for="current_company">Current Company</label>
-    <%= f.text_field :current_company, :class=>"text ui-widget-content ui-corner-all" %>
-    <label for="position">Position</label>
-    <%= f.text_field :position, :class=>"text ui-widget-content ui-corner-all" %>
-    <label for="key_skills">Key Skills</label>
-    <%= f.text_area :key_skills, :class=>"text ui-widget-content ui-corner-all" %>
-    <label for="total_experience">Total Experience</label>
-    <%= f.text_field :total_experience, :class=>"text ui-widget-content ui-corner-all" %>
-    <label for="expected_salary">Expected Salary</label>
-    <%= f.text_field :expected_salary, :class=>"text ui-widget-content ui-corner-all" %>
-    <label for="highest_qualification">Higest Qualification</label>
-    <%= f.text_field :highest_qualification, :class=>"text ui-widget-content ui-corner-all" %>
-    <label for="attach_resume">Attach Resume</label>
-    <%= f.file_field :attach_resume, :class=>"text ui-widget-content ui-corner-all" %>
-    <!-- Allow form submission with keyboard without duplicating the dialog button -->
-    <%= f.submit "Create", :tabindex=>"-1", :style=>"position:absolute; top:-1000px"%>
-    <% end %>
-    </fieldset>
+    <p class="validateTips">All form fields are required.</p>
+    <fieldset>
+      <%= form_for :resume, url: new_resume_path do |f| %>
+        <label for="resume_heading">Resume Heading</label>
+        <%= f.text_field :resume_heading, :class=>"text ui-widget-content ui-corner-all" %>
+        <label for="functional_area">Functional Area</label>
+        <%= f.text_field :functional_area, :class=>"text ui-widget-content ui-corner-all" %>
+        <label for="current_company">Current Company</label>
+        <%= f.text_field :current_company, :class=>"text ui-widget-content ui-corner-all" %>
+        <label for="position">Position</label>
+        <%= f.text_field :position, :class=>"text ui-widget-content ui-corner-all" %>
+        <label for="key_skills">Key Skills</label>
+        <%= f.text_area :key_skills, :class=>"text ui-widget-content ui-corner-all" %>
+        <label for="total_experience">Total Experience</label>
+        <%= f.text_field :total_experience, :class=>"text ui-widget-content ui-corner-all" %>
+        <label for="expected_salary">Expected Salary</label>
+        <%= f.text_field :expected_salary, :class=>"text ui-widget-content ui-corner-all" %>
+        <label for="highest_qualification">Higest Qualification</label>
+        <%= f.text_field :highest_qualification, :class=>"text ui-widget-content ui-corner-all" %>
+        <label for="attach_resume">Attach Resume</label>
+        <%= f.file_field :attach_resume, :class=>"text ui-widget-content ui-corner-all" %><br/>
+        <!-- Allow form submission with keyboard without duplicating the dialog button -->
+        <%= f.submit "Create"%>
+      <% end %>
+    </fieldset> 
   </div>
   <div id="users-contain" class="ui-widget">
-  <h1>List of all Resumes:</h1>
-  <table id="users" class="ui-widget ui-widget-content">
-  <thead>
-  <tr class="ui-widget-header ">
-  <th>Resume Heading</th>
-  <th>Functional Area</th>
-  <th>Position</th>
-  <th>Key Skills</th>
-  <th>Total Experience</th>
-  <th>Expected Salary</th>
-  <th>Active Status</th>
-  <th>Edit</th>
-  <th>Delete</th>
-  </tr>
-  </thead>
-  <tbody>
-  <% @resumes.each do |resume| %>
-    <tr>
-      <td><%= resume.resume_heading %></td>
-      <td><%= resume.functional_area %></td>
-      <td><%= resume.position %></td>
-      <td><%= resume.key_skills %></td>
-      <td><%= resume.total_experience %></td>
-      <td><%= resume.expected_salary %></td>
-      <td><%= resume.active %></td>
-      <td><%= link_to "Edit", edit_resume_path(resume) %></td>
-      <td><%= link_to "Delete", resume %></td>
+    <h1>List of all Resumes:</h1>
+    <table id="users" class="ui-widget ui-widget-content">
+    <thead>
+      <tr class="ui-widget-header ">
+      <th>Resume Heading</th>
+      <th>Functional Area</th>
+      <th>Position</th>
+      <th>Key Skills</th>
+      <th>Total Experience</th>
+      <th>Expected Salary</th>
+      <th>Active Status</th>
+      <th>Edit</th>
+      <th>Delete</th>
     </tr>
-    <% end %>
-  </tbody>
-  </table>
+    </thead>
+    <tbody>
+      <% @resumes.each do |resume| %>
+        <tr>
+          <td><%= resume.resume_heading %></td>
+          <td><%= resume.functional_area %></td>
+          <td><%= resume.position %></td>
+          <td><%= resume.key_skills %></td>
+          <td><%= resume.total_experience %></td>
+          <td><%= resume.expected_salary %></td>
+          <td><%= resume.active %></td>
+          <td><%= link_to "Edit", edit_resume_path(resume) %></td>
+          <td><%= link_to "Delete", resume %></td>
+        </tr>
+      <% end %>
+    </tbody>
+    </table>
   </div>
   <button id="create-resume">Create Resume</button>
 </body>
