@@ -7,11 +7,11 @@ class ResumesController < ApplicationController
   def index
      @resumes = current_user.resumes
   end
-  
+
   def create
     @resume = current_user.resumes.new(detail_params)
     if @resume.save
-      redirect_to @resume
+      redirect_to :back
     else
       render 'new'
     end
