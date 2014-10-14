@@ -1,101 +1,78 @@
-<!doctype html>
-<html lang="en">
-<head>
-<meta charset="utf-8">
-<title>jQuery UI Dialog - Animation</title>
-<link rel="stylesheet" href="//code.jquery.com/ui/1.11.1/themes/smoothness/jquery-ui.css">
-<script src="//code.jquery.com/jquery-1.10.2.js"></script>
-<script src="//code.jquery.com/ui/1.11.1/jquery-ui.js"></script>
-<link rel="stylesheet" href="/resources/demos/style.css">
-<style>
-  body { font-size: 62.5%; }
-  label, input { display:block; }
-  input.text { margin-bottom:12px; width:95%; padding: .4em; }
-  fieldset { padding:0; border:0; margin-top:25px; }
-  h1 { font-size: 1.2em; margin: .6em 0; }
-  div#users-contain { width: 350px; margin: 20px 0; }
-  div#users-contain table { margin: 1em 0; border-collapse: collapse; width: 100%; }
-  div#users-contain table td, div#users-contain table th { border: 1px solid #eee; padding: .6em 10px; text-align: left; }
-  .ui-dialog .ui-state-error { padding: .3em; }
-  .validateTips { border: 1px solid transparent; padding: 0.3em; }
-  </style>
 <script>
-$(function() {
-$( "#dialog" ).dialog({
-autoOpen: false,
-show: {
-effect: "blind",
-duration: 1000
-},
-hide: {
-effect: "explode",
-duration: 1000
-}
-});
-$( "#opener" ).click(function() {
-$( "#dialog" ).dialog( "open" );
-});
-});
+  $(function() {
+    $( "#dialog" ).dialog({
+      autoOpen: false,
+      show: {
+        effect: "blind",
+        duration: 1000
+      },
+      hide: {
+        effect: "explode",
+        duration: 1000
+      }
+    });
+    $( "#opener" ).click(function() {
+      $( "#dialog" ).dialog( "open" );
+    });
+  }); 
 </script>
-</head>
-<body>
-<div id="dialog" title="Basic dialog">
-  <%= form_for :resume, :url => {:action => "create", :controller => "resumes" } do |f| %>
-    <label for="resume_heading">Resume Heading</label>
-    <%= f.text_field :resume_heading, :class=>"text ui-widget-content ui-corner-all" %>
-    <label for="functional_area">Functional Area</label>
-    <%= f.text_field :functional_area, :class=>"text ui-widget-content ui-corner-all" %>
-    <label for="current_company">Current Company</label>
-    <%= f.text_field :current_company, :class=>"text ui-widget-content ui-corner-all" %>
-    <label for="position">Position</label>
-    <%= f.text_field :position, :class=>"text ui-widget-content ui-corner-all" %>
-    <label for="key_skills">Key Skills</label>
-    <%= f.text_area :key_skills, :class=>"text ui-widget-content ui-corner-all" %>
-    <label for="total_experience">Total Experience</label>
-    <%= f.text_field :total_experience, :class=>"text ui-widget-content ui-corner-all" %>
-    <label for="expected_salary">Expected Salary</label>
-    <%= f.text_field :expected_salary, :class=>"text ui-widget-content ui-corner-all" %>
-    <label for="highest_qualification">Higest Qualification</label>
-    <%= f.text_field :highest_qualification, :class=>"text ui-widget-content ui-corner-all" %>
-    <label for="attach_resume">Attach Resume</label>
-    <%= f.file_field :attach_resume, :class=>"text ui-widget-content ui-corner-all" %>
-    <!-- Allow form submission with keyboard without duplicating the dialog button -->
-    <%= f.submit "Create" %>
+
+  <div id="dialog" title="Basic dialog">
+    <%= form_for :resume, :url => {:action => "create", :controller => "resumes" } do |f| %>
+      <label for="resume_heading">Resume Heading</label>
+      <%= f.text_field :resume_heading, :class=>"text ui-widget-content ui-corner-all" %>
+      <label for="functional_area">Functional Area</label>
+      <%= f.text_field :functional_area, :class=>"text ui-widget-content ui-corner-all" %>
+      <label for="current_company">Current Company</label>
+      <%= f.text_field :current_company, :class=>"text ui-widget-content ui-corner-all" %>
+      <label for="position">Position</label>
+      <%= f.text_field :position, :class=>"text ui-widget-content ui-corner-all" %>
+      <label for="key_skills">Key Skills</label>
+      <%= f.text_area :key_skills, :class=>"text ui-widget-content ui-corner-all" %>
+      <label for="total_experience">Total Experience</label>
+      <%= f.text_field :total_experience, :class=>"text ui-widget-content ui-corner-all" %>
+      <label for="expected_salary">Expected Salary</label>
+      <%= f.text_field :expected_salary, :class=>"text ui-widget-content ui-corner-all" %>
+      <label for="highest_qualification">Higest Qualification</label>
+      <%= f.text_field :highest_qualification, :class=>"text ui-widget-content ui-corner-all" %>
+      <label for="attach_resume">Attach Resume</label>
+      <%= f.file_field :attach_resume, :class=>"text ui-widget-content ui-corner-all" %>
+      <!-- Allow form submission with keyboard without duplicating the dialog button -->
+      <%= f.submit "Create" %>
     <% end %>
-</div>
-<div id="users-contain" class="ui-widget">
-  <h1>List of all Resumes:</h1>
-  <table id="users" class="ui-widget ui-widget-content">
-  <thead>
-  <tr class="ui-widget-header ">
-  <th>Resume Heading</th>
-  <th>Functional Area</th>
-  <th>Position</th>
-  <th>Key Skills</th>
-  <th>Total Experience</th>
-  <th>Expected Salary</th>
-  <th>Active Status</th>
-  <th>Edit</th>
-  <th>Delete</th>
-  </tr>
-  </thead>
-  <tbody>
-  <% @resumes.each do |resume| %>
-    <tr>
-      <td><%= resume.resume_heading %></td>
-      <td><%= resume.functional_area %></td>
-      <td><%= resume.position %></td>
-      <td><%= resume.key_skills %></td>
-      <td><%= resume.total_experience %></td>
-      <td><%= resume.expected_salary %></td>
-      <td><%= resume.active %></td>
-      <td><%= link_to "Edit", edit_resume_path(resume) %></td>
-      <td><%= link_to "Delete", resume %></td>
-    </tr>
-    <% end %>
-  </tbody>
-  </table>
   </div>
-<button id="opener">Open Dialog</button>
-</body>
-</html>
+
+  <div id="users-contain" class="ui-widget table-responsive">
+    <h1>List of all Resumes:</h1>
+    <table id="users" class="ui-widget ui-widget-content table table-hover">
+      <thead>
+        <tr class="ui-widget-header ">
+          <th>Resume Heading</th>
+          <th>Functional Area</th>
+          <th>Position</th>
+          <th>Key Skills</th>
+          <th>Total Experience</th>
+          <th>Expected Salary</th>
+          <th>Active Status</th>
+          <th>Edit</th>
+          <th>Delete</th>
+        </tr>
+      </thead>
+      <tbody>
+      <% @resumes.each do |resume| %>
+        <tr>
+          <td><%= resume.resume_heading %></td>
+          <td><%= resume.functional_area %></td>
+          <td><%= resume.position %></td>
+          <td><%= resume.key_skills %></td>
+          <td><%= resume.total_experience %></td>
+          <td><%= resume.expected_salary %></td>
+          <td><%= resume.active %></td>
+          <td><%= link_to "Edit", edit_resume_path(resume) %></td>
+          <td><%= link_to "Delete", resume %></td>
+        </tr>
+        <% end %>
+      </tbody>
+    </table>
+    </div>
+  <button id="opener">Create New Resume</button>
