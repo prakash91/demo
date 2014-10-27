@@ -2,7 +2,14 @@
 <br/>
 <%= image_tag(@current_user.seeker.photo_url, :size => "100x120") if @current_user.seeker.photo.present? %>
 <br/>
-<%= link_to 'Add Resume',new_resume_path %>
-<h1> Home Job _Seeker </h1>
-<%= link_to 'Show deatil', seeker_path(current_user), :method => :get %>
-<%= link_to 'Show All Resume', resumes_path %>
+<h3> Home Job _Seeker </h3>
+
+<div id='calendar'>
+</div>
+
+<script>
+  $(document).ready(function () {
+    $('#calendar').fullCalendar();
+  })
+</script>
+

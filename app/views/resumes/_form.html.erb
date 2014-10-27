@@ -1,0 +1,101 @@
+<%= form_for @resume, :html => { :class => "form-horizontal resume" } do |f| %>
+
+    <% if @resume.errors.any? %>
+    <div id="error_expl" class="panel panel-danger">
+      <div class="panel-heading">
+        <h3 class="panel-title"><%= pluralize(@resume.errors.count, "error") %> prohibited this resume from being saved:</h3>
+      </div>
+      <div class="panel-body">
+        <ul>
+        <% @resume.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
+        </ul>
+      </div>
+    </div>
+  <% end %>
+
+  <div class="control-group">
+    <%= f.label :resume_heading, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.text_field :resume_heading, :class => 'form-control' %>
+    </div>
+    <%= error_span(@resume[:resume_heading]) %>
+  </div>
+  <div class="control-group">
+    <%= f.label :functional_area, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.text_field :functional_area, :class => 'form-control' %>
+    </div>
+    <%= error_span(@resume[:functional_area]) %>
+  </div>
+  <div class="control-group">
+    <%= f.label :current_company, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.text_field :current_company, :class => 'form-control' %>
+    </div>
+    <%= error_span(@resume[:current_company]) %>
+  </div>
+  <div class="control-group">
+    <%= f.label :position, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.text_field :position, :class => 'form-control' %>
+    </div>
+    <%= error_span(@resume[:position]) %>
+  </div>
+  <div class="control-group">
+    <%= f.label :key_skills, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.text_field :key_skills, :class => 'form-control' %>
+    </div>
+    <%= error_span(@resume[:key_skills]) %>
+  </div>
+  <div class="control-group">
+    <%= f.label :total_experience, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.text_field :total_experience, :class => 'form-control' %>
+    </div>
+    <%= error_span(@resume[:total_experience]) %>
+  </div>
+  <div class="control-group">
+    <%= f.label :attach_resume, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.file_field :attach_resume%>
+    </div>
+    <%= error_span(@resume[:attach_resume]) %>
+  </div>
+  <div class="control-group">
+    <%= f.label :expected_salary, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.text_field :expected_salary, :class => 'form-control' %>
+    </div>
+    <%= error_span(@resume[:expected_salary]) %>
+  </div>
+  <div class="control-group">
+    <%= f.label :active, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.text_field :active, :class => 'form-control' %>
+    </div>
+    <%= error_span(@resume[:active]) %>
+  </div>
+  <div class="control-group">
+    <%= f.label :highest_qualification, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.text_field :highest_qualification, :class => 'form-control' %>
+    </div>
+    <%= error_span(@resume[:highest_qualification]) %>
+  </div>
+  <div class="control-group">
+    <%= f.label :user_id, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.text_field :user_id, :class => 'form-control' %>
+    </div>
+    <%= error_span(@resume[:user_id]) %>
+  </div>
+
+
+  <%= f.submit nil, :class => 'btn btn-primary' %>
+  <%= link_to t('.cancel', :default => t("helpers.links.cancel")),
+            resumes_path, :class => 'btn btn-default' %>
+
+<% end %>

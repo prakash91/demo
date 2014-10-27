@@ -1,26 +1,39 @@
-<h1>Resume </h1>
+<%- model_class = Resume -%>
+<div class="page-header">
+  <h1><%=t '.title', :default => model_class.model_name.human.titleize %></h1>
+</div>
 
-<table>
-    <tr><td>Resume Heading</td><td><%= @resume.resume_heading %></td></tr>
+<dl class="dl-horizontal">
+  <dt><strong><%= model_class.human_attribute_name(:resume_heading) %>:</strong></dt>
+  <dd><%= @resume.resume_heading %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:functional_area) %>:</strong></dt>
+  <dd><%= @resume.functional_area %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:current_company) %>:</strong></dt>
+  <dd><%= @resume.current_company %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:position) %>:</strong></dt>
+  <dd><%= @resume.position %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:key_skills) %>:</strong></dt>
+  <dd><%= @resume.key_skills %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:total_experience) %>:</strong></dt>
+  <dd><%= @resume.total_experience %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:attach_resume) %>:</strong></dt>
+  <dd><%= image_tag(@resume.attach_resume_url, :size => "100x120") if @resume.attach_resume_url.present? %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:expected_salary) %>:</strong></dt>
+  <dd><%= @resume.expected_salary %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:active) %>:</strong></dt>
+  <dd><%= @resume.active %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:highest_qualification) %>:</strong></dt>
+  <dd><%= @resume.highest_qualification %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:user_id) %>:</strong></dt>
+  <dd><%= @resume.user_id %></dd>
+</dl>
 
-    <tr><td>Functional Area</td><td><%= @resume.functional_area %></td></tr>
-
-    <tr><td>Current Company</td><td><%= @resume.current_company %></td></tr>
-
-    <tr><td>Position</td><td><%= @resume.position %></td></tr>
-
-    <tr><td>Key Skills</td><td><%= @resume.key_skills %></td></tr>
-
-    <tr><td>Total Experience</td><td><%= @resume.total_experience %></td></tr>
-
-    <tr><td>Expected Salary</td><td><%= @resume.expected_salary %></td></tr>
-
-    <tr><td>Higest Qualification</td><td><%= @resume.highest_qualification %></td></tr>
-
-    <tr><td>Attach Resume</td><td><%= image_tag(@resume.attach_resume_url, :size => "100x170") if @resume.attach_resume.present? %></td></tr>
-
-    <tr><td>Active</td><td><%= @resume.active %></td></tr>
-
-  </table>
-
-  <%= link_to "Edit", edit_resume_path(@resume) %>
+<%= link_to t('.back', :default => t("helpers.links.back")),
+              resumes_path, :class => 'btn btn-default'  %>
+<%= link_to t('.edit', :default => t("helpers.links.edit")),
+              edit_resume_path(@resume), :class => 'btn btn-default' %>
+<%= link_to t('.destroy', :default => t("helpers.links.destroy")),
+              resume_path(@resume),
+              :method => 'delete',
+              :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) },
+              :class => 'btn btn-danger' %>

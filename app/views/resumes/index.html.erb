@@ -14,7 +14,8 @@
     $( "#opener" ).click(function() {
       $( "#dialog" ).dialog( "open" );
     });
-  }); 
+  });
+
 </script>
 
   <div id="dialog" title="Basic dialog">
@@ -68,11 +69,11 @@
           <td><%= resume.total_experience %></td>
           <td><%= resume.expected_salary %></td>
           <td><%= resume.active %></td>
-          <td><%= link_to "Edit", edit_resume_path(resume) %></td>
-          <td><%= link_to "Delete", resume %></td>
+          <td><%= link_to "", edit_resume_path(resume), class: "btn btn-info glyphicon glyphicon-edit" %></td>
+          <td><%= link_to "", resume, :method =>'delete', class: "btn btn-danger glyphicon glyphicon-trash" %></td>
         </tr>
         <% end %>
       </tbody>
     </table>
     </div>
-  <button id="opener">Create New Resume</button>
+  <button id="opener" class = "btn btn-success">Create New Resume</button>
