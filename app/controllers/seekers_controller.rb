@@ -32,6 +32,7 @@ class SeekersController < ApplicationController
 
 	def show
 		@seeker= current_user.seeker(params[:id])
+		@email = @seeker.user.email
 	end
 	def home
 		@seeker= current_user.seeker(params[:id])
