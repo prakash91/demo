@@ -10,6 +10,7 @@ gem 'fullcalendar-rails'
 gem 'jquery-rails'
 gem 'jbuilder', '~> 2.0'
 gem 'less-rails-bootstrap'
+gem 'private_pub'
 gem 'rails', '4.1.4'
 gem 'sqlite3'
 gem 'spring',        group: :development
@@ -18,6 +19,7 @@ gem 'sdoc', '~> 0.4.0',          group: :doc
 gem 'twitter-bootstrap-rails'
 gem 'therubyracer'
 gem 'turbolinks'
+gem 'thin'
 gem 'uglifier', '>= 1.3.0'
 
 # Use ActiveModel has_secure_password

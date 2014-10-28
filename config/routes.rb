@@ -10,6 +10,9 @@ Rails.application.routes.draw do
     root :to => 'devise/sessions#new'
   end
 
+  resources :conversations do
+    resources :messages
+  end
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
 

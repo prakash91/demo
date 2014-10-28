@@ -16,6 +16,8 @@
 //= require turbolinks
 //= require fullcalendar
 //= require_tree .
+//= require chat
+//= require private_pub
 
 $(function(){
 var $form_inputs = $('form input');
