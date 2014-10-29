@@ -4,7 +4,9 @@
   <title>MyPro</title>
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+   <%= stylesheet_link_tag '//maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css' %>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.5.1/jquery.min.js"></script>
+  <meta content='<%= user_signed_in? ? current_user.id : "" %>' name='user-id'/>
   <%= csrf_meta_tags %>
   <style>
     body{
@@ -23,7 +25,7 @@
       -moz-box-shadow: 10px 10px 10px rgba(0,0,0,1) inset, -9px -9px 8px rgba(0,0,0,1) inset;
       -webkit-box-shadow: 8px 8px 8px rgba(0,0,0,1) inset, -9px -9px 8px rgba(0,0,0,1) inset;
       box-shadow: 8px 8px 8px rgba(0,0,0,1) inset, -9px -9px 8px rgba(0,0,0,1) inset;
-      margin: 100px auto;
+      margin: 0px auto;
     }
     /* Artifical "border" to clear border to bypass mask */
     .border{
@@ -74,6 +76,24 @@
       75% {background-color: #EDF255;}
       90% {background-color: #F20006;}
       100% {background-color: #39f;}
+    }
+     @-webkit-keyframes text-colors {
+      0% {color: #39f;}
+      15% {color: #F246C9;}
+      30% {color: #4453F2;}
+      45% {color: #44F262;}
+      60% {color: #F257D4;}
+      75% {color: #EDF255;}
+      90% {color: #F20006;}
+      100% {color: #39f;}
+    }
+     h1{
+      -webkit-animation-direction: normal;
+      -webkit-animation-duration: 20s;
+      -webkit-animation-iteration-count: infinite;
+      -webkit-animation-name: text-colors;
+      -webkit-animation-timing-function: ease;
+      font-family: 'Hotel Open';
     }
     .border,.rain{
       -webkit-animation-direction: normal;
@@ -163,6 +183,7 @@
   Logged in as <strong><%= current_user.email %></strong>.
   <%= link_to 'Edit profile', edit_user_registration_path, :class => 'navbar-link' %> |
   <%= link_to "Logout", destroy_user_session_path, method: :delete, :class => 'navbar-link'  %>
+  <audio id="chatAudio"><source src="/sounds/notification.mp3" type="audio/mpeg"></audio>
 <% else %>
   <%= link_to "Sign up", new_user_registration_path, :class => 'navbar-link'  %> |
   <%= link_to "Login", new_user_session_path, :class => 'navbar-link'  %>
