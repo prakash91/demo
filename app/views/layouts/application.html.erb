@@ -139,22 +139,23 @@
       -moz-box-shadow: 0px 0px 4px #000 inset;
       -webkit-box-shadow: 0px 0px 4px #000 inset;
       box-shadow: 0px 0px 4px #000 inset;
-      outline: 1px solid #333;
+      outline: 0px solid #333;
       border: 1px solid #000;
       padding: 5px;
       color: #444;
       font-size: 16px;
     }
     form input:focus{
-      outline: 1px solid #555;
+      outline: 0px solid #555;
       color: #FFF;
     }
     input[type="submit"]{
       color: #999;
       padding: 5px 10px;
       float: right;
+      height:30%;
       margin: 20px 0;
-      border: 1px solid #000;
+      border: 0px solid #000;
       font-weight: lighter;
       -moz-border-radius: 15px;
       -webkit-border-radius: 15px;
@@ -185,8 +186,6 @@
   <%= link_to "Logout", destroy_user_session_path, method: :delete, :class => 'navbar-link'  %>
   <audio id="chatAudio"><source src="/sounds/notification.mp3" type="audio/mpeg"></audio>
 <% else %>
-  <%= link_to "Sign up", new_user_registration_path, :class => 'navbar-link'  %> |
-  <%= link_to "Login", new_user_session_path, :class => 'navbar-link'  %>
   <%= yield %>
 <% end %>
 

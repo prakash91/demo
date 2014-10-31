@@ -14,7 +14,9 @@
 //= require jquery_ujs
 //= require twitter/bootstrap
 //= require turbolinks
-//= require fullcalendar
+//= require classie
+//= require modernizr.min
+//= require photostack
 //= require_tree .
 
 $(function(){
